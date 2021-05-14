@@ -31,13 +31,23 @@ function row(columns) {
         let tabPart = tabParts[k];
   
         let kind = tabPart.slice(0, 1);
-        let tabText = tabPart.slice(1);
+        let len = 3; // quarter note
+        let startIdxTabText = 1;
+        if (kind >= '0' && kind <= '9') {
+          console.log(kind, ' is number');
+          len = kind;
+          startIdxTabText = 2;
+          kind = tabPart.slice(1, 2);
+        }
+        let tabText = tabPart.slice(startIdxTabText);
+        //console.log('kind:', kind, ',len:', len, ',tabText:', tabText);
+         
         if (kind == '_') {
           document.write('<font class="space">-</font>');
         } else if (kind == 'd') { // draw
-          document.write('<font class="r">' + tabText + '</font>');
+          document.write('<font class="pad draw d' + len + '">' + tabText + '</font>');
         } else if (kind == 'b') { // blow
-          document.write('<font class="b">' + tabText + '</font>');
+          document.write('<font class="pad blow b' + len + '">' + tabText + '</font>');
         }
       }
     }
