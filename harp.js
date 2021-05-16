@@ -42,12 +42,14 @@ function row(columns) {
         let tabText = tabPart.slice(startIdxTabText);
         //console.log('kind:', kind, ',len:', len, ',tabText:', tabText);
          
-        if (kind == '_') {
-          document.write('<font class="space">-</font>');
-        } else if (kind == 'd') { // draw
+        if (kind == 'd') { // draw
           document.write('<font class="pad draw d' + len + '">' + tabText + '</font>');
         } else if (kind == 'b') { // blow
           document.write('<font class="pad blow b' + len + '">' + tabText + '</font>');
+        } else if (kind == 'r') { // rest
+          document.write('<font class="pad rest r' + len + '">-</font>');
+        } else if (kind == 't') { // text
+          document.write('<font class="pad text">' + tabText + '</font>');
         }
       }
     }
